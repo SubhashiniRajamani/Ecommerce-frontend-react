@@ -3,15 +3,21 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18             # Specifies the Node.js runtime version
+      nodejs: 18
+    commands:
+      - npm install --legacy-peer-deps
+
   pre_build:
     commands:
-      - npm install --legacy-peer-deps  # Forces npm to install the packages
+      - export $(grep -v '^#' .env | xargs)
+      - echo "API URL = $REACT_APP_API_URL"
+
   build:
     commands:
       - npm run build
+
 artifacts:
-  files: 
-    - '**/*'              # Includes all files and subdirectories from the root directory.
-    - 'appspec.yml'          # Includes the appspec.yml file
-    - 'scripts/**' 
+  files:
+    - '**/*'
+    - appspec.yml
+    - scripts/**
