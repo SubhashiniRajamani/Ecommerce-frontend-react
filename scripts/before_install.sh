@@ -1,7 +1,5 @@
 #!/bin/bash
 echo "Stopping old app"
-pm2 stop all || true
-
 echo "Deleting old node_modules"
-cd /home/ubuntu/Ecommerce-backend-mern-main
+cd /var/www/Ecommerce-frontend-react-main
 rm -rf *
