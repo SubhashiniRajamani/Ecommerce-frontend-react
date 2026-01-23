@@ -5,15 +5,22 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
+      - echo "Installing dependencies..."
       - npm install --legacy-peer-deps
 
   pre_build:
     commands:
-      - export $(grep -v '^#' .env | xargs)
-      - echo "API URL=$REACT_APP_API_URL"
+      - echo "Loading environment variables..."
+      # Option 1: use CodeBuild env variable
+      - echo "API URL: $REACT_APP_API_URL"
+
+      # Option 2: uncomment if you want to load .env from repo
+      # - export $(grep -v '^#' .env | xargs)
+      # - echo "API URL: $REACT_APP_API_URL"
 
   build:
     commands:
+      - echo "Building React app..."
       - npm run build
 
 artifacts:
