@@ -12,9 +12,6 @@ phases:
     commands:
       - echo "Loading environment variables..."
       - echo "API URL: $REACT_APP_API_URL"
-      # If you want to load .env from repo:
-      # - export $(grep -v '^#' .env | xargs)
-      # - echo "API URL after export: $REACT_APP_API_URL"
 
   build:
     commands:
