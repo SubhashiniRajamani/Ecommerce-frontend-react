@@ -1,3 +1,4 @@
 #!/bin/bash
 cd /var/www/Ecommerce-frontend-react-main
-systemctl start nginx 
+sudo systemctl restart nginx
+
