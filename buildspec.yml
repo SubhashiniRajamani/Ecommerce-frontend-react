@@ -10,7 +10,7 @@ phases:
   pre_build:
     commands:
       - export $(grep -v '^#' .env | xargs)
-      - echo "API URL = $REACT_APP_API_URL"
+      - echo "API URL=$REACT_APP_API_URL"
 
   build:
     commands:
