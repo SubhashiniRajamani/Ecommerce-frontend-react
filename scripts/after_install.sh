@@ -1,2 +1,2 @@
 #!/bin/bash
-cd /home/ubuntu/Ecommerce-frontend-react-main
+cd /var/www/Ecommerce-frontend-react-main
