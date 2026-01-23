@@ -7,9 +7,9 @@ phases:
   pre_build:
     commands:
       - npm install --legacy-peer-deps  # Forces npm to install the packages
-      - npm run build
   build:
     commands:
+      - npm run build
 artifacts:
   files: 
     - '**/*'              # Includes all files and subdirectories from the root directory.
