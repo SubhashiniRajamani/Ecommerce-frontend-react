@@ -4,7 +4,7 @@ files:
   # Specify the source and destination files/directories if needed
   # For example:
   - source: /
-    destination: /home/ubuntu/Ecommerce-frontend-react-main 
+    destination: /var/www/Ecommerce-frontend-react-main 
 
 hooks:
   BeforeInstall:
