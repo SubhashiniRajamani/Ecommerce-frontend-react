@@ -2,4 +2,4 @@
 echo "Stopping old app"
 echo "Deleting old node_modules"
 cd /var/www/Ecommerce-frontend-react-main
-rm -rf node_modules package-lock.json
+rm -rf node_modules package-lock.json build
