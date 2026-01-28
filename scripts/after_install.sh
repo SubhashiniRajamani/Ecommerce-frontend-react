@@ -1,5 +1,5 @@
 #!/bin/bash
 cd /var/www/Ecommerce-frontend-react-main
 sudo nginx -t
-sudo systemctl restart nginx
+sudo systemctl start nginx
 
