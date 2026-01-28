@@ -7,15 +7,11 @@ phases:
     commands:
       - echo "Installing dependencies"
       - npm install --legacy-peer-deps
+      - npm run build
 
   pre_build:
     commands:
       - echo "Loading environment variables"
-
-  build:
-    commands:
-      - echo "Building React app"
-      - npm run build
 
 artifacts:
   files:
