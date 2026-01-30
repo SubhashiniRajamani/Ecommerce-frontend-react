@@ -1,5 +1,11 @@
 #!/bin/bash
-echo "Stopping old app"
-echo "Deleting old node_modules"
-cd /var/www/Ecommerce-frontend-react-main
-rm -rf node_modules package-lock.json build
+set -e
+
+echo "Stopping existing frontend container..."
+
+docker stop ecommerce-frontend || true
+docker rm ecommerce-frontend || true
+
+echo "Cleaning Docker system..."
+docker system prune -af || true
+
