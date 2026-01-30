@@ -4,6 +4,7 @@ env:
   variables:
     AWS_REGION: us-east-1
     IMAGE_NAME: app
+    REPO_NAME: ecommerce-frontend
 
 phases:
   pre_build:
@@ -16,10 +17,10 @@ phases:
       - echo Building frontend Docker image
       - docker build -t $IMAGE_NAME .
       - docker tag $IMAGE_NAME:latest \
-          $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME:latest
+          $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:latest
 
   post_build:
     commands:
       - echo Pushing frontend Docker image
       - docker push \
-          $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME:latest
+          $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:latest
