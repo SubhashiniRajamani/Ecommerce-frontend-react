@@ -1,17 +1,17 @@
 version: 0.0
 os: linux
+
 files:
-  # Specify the source and destination files/directories if needed
-  # For example:
-  - source: .
-    destination: /var/www/Ecommerce-frontend-react-main 
+  - source: /
+    destination: /var/www/ecommerce-frontend
 
 hooks:
   BeforeInstall:
     - location: scripts/before_install.sh
       timeout: 300
       runas: root
-  AfterInstall:
+
+  ApplicationStart:
     - location: scripts/after_install.sh
       timeout: 300
       runas: root
