@@ -3,6 +3,7 @@ version: 0.2
 env:
   variables:
     AWS_REGION: us-east-1
+    AWS_ACCOUNT_ID: "313530061217"
     IMAGE_NAME: app
     REPO_NAME: ecommerce-frontend
 
@@ -10,17 +11,20 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 313530061217.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr get-login-password --region $AWS_REGION |
+        docker login --username AWS --password-stdin \
+        $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
 
   build:
     commands:
       - echo Building frontend Docker image
-      - docker build -t $IMAGE_NAME .
+      - docker build --no-cache -t $IMAGE_NAME .
       - docker tag $IMAGE_NAME:latest \
-          $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:latest
+        $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:latest
 
   post_build:
     commands:
       - echo Pushing frontend Docker image
       - docker push \
-          $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:latest
+        $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:latest
+
