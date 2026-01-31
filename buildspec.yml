@@ -23,3 +23,9 @@ phases:
     commands:
       - echo Pushing frontend Docker image
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:latest
+
+artifacts:
+  files:
+    - '**/*'
+    - 'appspec.yml'
+    - 'scripts/**'
