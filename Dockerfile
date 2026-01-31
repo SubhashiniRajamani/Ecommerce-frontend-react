@@ -1,6 +1,5 @@
-GNU nano 7.2
 # ---------- Build stage ----------
-FROM public.ecr.aws/docker/library/node:20-alpine
+FROM public.ecr.aws/docker/library/node:20-alpine AS build
 
 WORKDIR /app
 
