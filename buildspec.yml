@@ -11,20 +11,15 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR
-      - aws ecr get-login-password --region $AWS_REGION |
-        docker login --username AWS --password-stdin \
-        $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
 
   build:
     commands:
       - echo Building frontend Docker image
       - docker build --no-cache -t $IMAGE_NAME .
-      - docker tag $IMAGE_NAME:latest \
-        $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:latest
+      - docker tag $IMAGE_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:latest
 
   post_build:
     commands:
       - echo Pushing frontend Docker image
-      - docker push \
-        $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:latest
-
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPO_NAME:latest
