@@ -5,7 +5,7 @@ echo "Stopping existing frontend container..."
 
 docker stop ecommerce-frontend || true
 docker rm -f ecommerce-frontend || true
-docker rmi app
+docker rmi app || true
 
 echo "Cleaning Docker system..."
 docker system prune -af || true
